@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+body {
+  padding: 0;
+  background-color: #0f172a; 
+  color: white;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+
+@theme {
+  --color-skyline-dark: #0f172a;
+  --color-skyline-accent: #5b89a6;
+  --color-skyline-accent-hover: #7ea4bc;
+}
