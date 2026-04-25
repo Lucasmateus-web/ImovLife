@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { 
-  FiMapPin, FiSearch, FiX, FiCheckCircle, 
-  FiInfo, FiSliders, FiBell, FiMaximize2, FiChevronRight 
+import {
+  FiMapPin, FiSearch, FiX, FiCheckCircle,
+  FiInfo, FiSliders, FiBell, FiMaximize2, FiChevronRight
 } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from "../../../../assets/imovlife.png";
@@ -121,116 +121,129 @@ export const Explores = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
-      <header className="h-20 bg-[#0F172A] px-8 flex items-center justify-between z-50 sticky top-0 shadow-xl">
-        <div className="flex items-center gap-10">
-          <div className="flex items-center gap-2">
-            <img src={logo} alt="ImovLife" className="h-12 w-auto object-contain cursor-pointer" onClick={() => navigate('/')} />
-          </div>
-          <nav className="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
-            <li className="cursor-pointer transition-all text-slate-400 hover:text-white flex items-center gap-1 list-none" onClick={() => setIsComprarOpen(!isComprarOpen)}>
-              Comprar
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      <header className="sticky top-0 z-50 bg-[#0F172A] shadow-xl">
+        <div className="flex flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-4">
+            <img src={logo} alt="ImovLife" className="h-10 w-auto cursor-pointer object-contain sm:h-12" onClick={() => navigate('/')} />
+
+            <button onClick={() => navigate('/login')} className="flex shrink-0 items-center gap-2 rounded-full bg-[#5b89a6] px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7ea4bc] hover:shadow-xl sm:px-6 sm:text-xs">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
+              Entrar
+            </button>
+          </div>
+
+          <nav className="flex items-center gap-6 overflow-x-auto pb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 sm:gap-8 sm:text-[11px]">
+            <li className="relative list-none whitespace-nowrap">
+              <button className="flex cursor-pointer items-center gap-1 transition-all hover:text-white" onClick={() => setIsComprarOpen(!isComprarOpen)}>
+                Comprar
+                <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
               <CityMenuCards isOpen={isComprarOpen} />
             </li>
-            <li className="cursor-pointer transition-all text-slate-400 hover:text-white flex items-center gap-1 list-none relative" onClick={() => setIsAnunciarOpen(!isAnunciarOpen)}>
-              Anunciar
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+            <li className="relative list-none whitespace-nowrap">
+              <button className="flex cursor-pointer items-center gap-1 transition-all hover:text-white" onClick={() => setIsAnunciarOpen(!isAnunciarOpen)}>
+                Anunciar
+                <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
               <Anuncys isOpen={isAnunciarOpen} />
             </li>
-            <li className="cursor-pointer transition-all text-slate-400 hover:text-white flex items-center gap-1 list-none" onClick={() => setIsAlugarOpen(!isAlugarOpen)}>
-              Alugar
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+            <li className="relative list-none whitespace-nowrap">
+              <button className="flex cursor-pointer items-center gap-1 transition-all hover:text-white" onClick={() => setIsAlugarOpen(!isAlugarOpen)}>
+                Alugar
+                <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
               <AlugCards isOpen={isAlugarOpen} />
             </li>
-            <li className="cursor-pointer transition-all text-slate-400 hover:text-white flex items-center gap-1 list-none relative" onClick={() => setIsAjudarOpen(!isAjudarOpen)}>
-              Ajuda
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+            <li className="relative list-none whitespace-nowrap">
+              <button className="flex cursor-pointer items-center gap-1 transition-all hover:text-white" onClick={() => setIsAjudarOpen(!isAjudarOpen)}>
+                Ajuda
+                <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
               <Help isOpen={isAjudarOpen} />
             </li>
           </nav>
         </div>
-
-        <button onClick={() => navigate('/login')} className="bg-[#5b89a6] hover:bg-[#7ea4bc] text-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest transition-all shadow-lg rounded-full cursor-pointer hover:-translate-y-0.5 hover:shadow-xl duration-200 flex items-center gap-2">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-          Entrar
-        </button>
       </header>
 
-      <div className="px-8 py-4 border-b border-slate-100 flex flex-wrap items-center gap-3 bg-white sticky top-20 z-40 shadow-sm">
-        <div className="relative flex-1 min-w-[300px]">
-          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Onde deseja morar?"
-            className="w-full bg-slate-100/50 border border-transparent rounded-full py-3.5 pl-12 pr-4 text-sm font-medium focus:bg-white focus:border-slate-200 outline-none transition-all"
-            onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-          />
+      <div className="border-b border-slate-100 bg-white px-4 py-4 shadow-sm sm:px-8 md:sticky md:top-20 md:z-40">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+          <div className="relative w-full lg:min-w-[280px] lg:flex-1">
+            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Onde deseja morar?"
+              className="w-full rounded-full border border-transparent bg-slate-100/50 py-3.5 pl-12 pr-4 text-sm font-medium outline-none transition-all focus:border-slate-200 focus:bg-white"
+              onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+            />
+          </div>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <select
+              className="w-full cursor-pointer rounded-full border border-transparent bg-slate-100/50 px-6 py-3.5 text-xs font-bold text-slate-700 outline-none focus:border-slate-200 sm:w-auto"
+              onChange={(e) => setFilters({ ...filters, type: e.target.value })}
+            >
+              <option value="Todos">Tipo de Imóvel</option>
+              <option value="Apartamento">Apartamento</option>
+              <option value="Casa">Casa</option>
+            </select>
+
+            <select
+              className="w-full cursor-pointer rounded-full border border-transparent bg-slate-100/50 px-6 py-3.5 text-xs font-bold text-slate-700 outline-none focus:border-slate-200 sm:w-auto"
+              onChange={(e) => setFilters({ ...filters, beds: Number(e.target.value) })}
+            >
+              <option value="0">Dormitórios</option>
+              <option value="1">1+ quartos</option>
+              <option value="2">2+ quartos</option>
+              <option value="3">3+ quartos</option>
+              <option value="4">4+ quartos</option>
+            </select>
+
+            <button
+              onClick={() => setShowAdvancedFilters(true)}
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3.5 text-xs font-bold text-white shadow-lg shadow-slate-200 transition-all cursor-pointer hover:bg-sky-700 sm:w-auto"
+            >
+              <FiSliders /> Mais filtros
+            </button>
+
+            <button className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-slate-100 px-6 py-3.5 text-xs font-bold text-slate-700 transition-all cursor-pointer hover:bg-slate-50 sm:w-auto">
+              <FiBell /> Alerta
+            </button>
+          </div>
         </div>
-
-        <select
-          className="bg-slate-100/50 px-6 py-3.5 rounded-full text-xs font-bold text-slate-700 outline-none border border-transparent focus:border-slate-200 cursor-pointer"
-          onChange={(e) => setFilters({ ...filters, type: e.target.value })}
-        >
-          <option value="Todos" className='cursor-pointer'>Tipo de Imóvel</option>
-          <option value="Apartamento" className='cursor-pointer'>Apartamento</option>
-          <option value="Casa" className='cursor-pointer'>Casa</option>
-        </select>
-
-        <select
-          className="bg-slate-100/50 px-6 py-3.5 rounded-full cursor-pointer text-xs font-bold text-slate-700 outline-none border border-transparent focus:border-slate-200"
-          onChange={(e) => setFilters({ ...filters, beds: Number(e.target.value) })}
-        >
-          <option value="0">Dormitórios</option>
-          <option value="1">1+ quartos</option>
-          <option value="2">2+ quartos</option>
-          <option value="3">3+ quartos</option>
-          <option value="4">4+ quartos</option>
-        </select>
-
-        <button
-          onClick={() => setShowAdvancedFilters(true)}
-          className="flex items-center cursor-pointer gap-2 bg-slate-900 text-white px-6 py-3.5 rounded-full text-xs font-bold hover:bg-sky-700 transition-all shadow-lg shadow-slate-200"
-        >
-          <FiSliders /> Mais filtros
-        </button>
-
-        <button className="flex items-center gap-2 border-2 cursor-pointer border-slate-100 px-6 py-3.5 rounded-full text-xs font-bold text-slate-700 hover:bg-slate-50 transition-all">
-          <FiBell /> Alerta
-        </button>
       </div>
 
       <AnimatePresence>
         {showAdvancedFilters && (
           <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowAdvancedFilters(false)} className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]" />
-            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} className="fixed right-0 top-0 h-full w-full max-w-md bg-white z-[70] shadow-2xl p-10 flex flex-col">
-              <div className="flex justify-between items-center mb-10 shrink-0">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowAdvancedFilters(false)} className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm" />
+            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} className="fixed right-0 top-0 z-[70] flex h-full w-full max-w-md flex-col bg-white p-6 shadow-2xl sm:p-10">
+              <div className="mb-8 flex shrink-0 items-center justify-between">
                 <h2 className="text-xl font-black uppercase tracking-tighter">Filtros Avançados</h2>
-                <button onClick={() => setShowAdvancedFilters(false)} className="p-2 cursor-pointer hover:bg-slate-100 rounded-full transition-colors"><FiX size={24} /></button>
+                <button onClick={() => setShowAdvancedFilters(false)} className="rounded-full p-2 transition-colors cursor-pointer hover:bg-slate-100"><FiX size={24} /></button>
               </div>
 
-              <div className="flex-1 overflow-y-auto space-y-12 pr-2 scrollbar-hide">
+              <div className="scrollbar-hide flex-1 space-y-10 overflow-y-auto pr-1">
                 <section>
-                  <label className="text-[10px] font-black uppercase text-slate-400 mb-6 block tracking-widest">Faixa de Preço: R$ {filters.maxPrice.toLocaleString()}</label>
-                  <input type="range" min="1000" max="25000" step="500" value={filters.maxPrice} onChange={(e) => setFilters({ ...filters, maxPrice: Number(e.target.value) })} className="w-full accent-sky-700 cursor-pointer" />
-                  <div className="flex justify-between mt-2 text-[10px] font-bold text-slate-400"><span>R$ 1.000</span><span>R$ 25.000+</span></div>
+                  <label className="mb-6 block text-[10px] font-black uppercase tracking-widest text-slate-400">Faixa de Preço: R$ {filters.maxPrice.toLocaleString()}</label>
+                  <input type="range" min="1000" max="25000" step="500" value={filters.maxPrice} onChange={(e) => setFilters({ ...filters, maxPrice: Number(e.target.value) })} className="w-full cursor-pointer accent-sky-700" />
+                  <div className="mt-2 flex justify-between text-[10px] font-bold text-slate-400"><span>R$ 1.000</span><span>R$ 25.000+</span></div>
                 </section>
 
                 <section>
-                  <label className="text-[10px] font-black uppercase text-slate-400 mb-6 block tracking-widest">Área Mínima (m²)</label>
+                  <label className="mb-6 block text-[10px] font-black uppercase tracking-widest text-slate-400">Área Mínima (m²)</label>
                   <div className="grid grid-cols-2 gap-3">
                     {[0, 50, 150, 300].map(m => (
-                      <button key={m} onClick={() => setFilters({ ...filters, minSize: m })} className={`py-4 cursor-pointer rounded-2xl text-xs font-bold border transition-all ${filters.minSize === m ? 'bg-sky-800 border-sky-700 text-white shadow-lg shadow-sky-100' : 'border-slate-100 text-slate-500 hover:border-slate-300'}`}>
+                      <button key={m} onClick={() => setFilters({ ...filters, minSize: m })} className={`cursor-pointer rounded-2xl py-4 text-xs font-bold border transition-all ${filters.minSize === m ? 'bg-sky-800 border-sky-700 text-white shadow-lg shadow-sky-100' : 'border-slate-100 text-slate-500 hover:border-slate-300'}`}>
                         {m === 0 ? 'Qualquer' : `${m}m²+`}
                       </button>
                     ))}
@@ -238,10 +251,10 @@ export const Explores = () => {
                 </section>
 
                 <section>
-                  <label className="text-[10px] font-black uppercase text-slate-400 mb-6 block tracking-widest">Vagas de Garagem</label>
-                  <div className="flex gap-4">
+                  <label className="mb-6 block text-[10px] font-black uppercase tracking-widest text-slate-400">Vagas de Garagem</label>
+                  <div className="flex flex-wrap gap-3">
                     {[0, 1, 2, 3, 4].map(v => (
-                      <button key={v} onClick={() => setFilters({ ...filters, parking: v })} className={`w-14 h-14 cursor-pointer rounded-2xl font-bold text-sm border transition-all ${filters.parking === v ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-100 text-slate-500 hover:border-slate-300'}`}>
+                      <button key={v} onClick={() => setFilters({ ...filters, parking: v })} className={`h-14 w-14 cursor-pointer rounded-2xl border text-sm font-bold transition-all ${filters.parking === v ? 'border-slate-900 bg-slate-900 text-white' : 'border-slate-100 text-slate-500 hover:border-slate-300'}`}>
                         {v === 0 ? 'Any' : `${v}+`}
                       </button>
                     ))}
@@ -249,8 +262,8 @@ export const Explores = () => {
                 </section>
               </div>
 
-              <div className="pt-8 border-t border-slate-100 shrink-0">
-                <button onClick={() => setShowAdvancedFilters(false)} className="w-full bg-sky-400 text-white py-5 cursor-pointer rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-sky-800 transition-all shadow-xl shadow-sky-100">
+              <div className="shrink-0 border-t border-slate-100 pt-8">
+                <button onClick={() => setShowAdvancedFilters(false)} className="w-full cursor-pointer rounded-2xl bg-sky-400 py-5 text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-sky-100 transition-all hover:bg-sky-800">
                   Ver {filteredData.length} Imóveis
                 </button>
               </div>
@@ -259,62 +272,62 @@ export const Explores = () => {
         )}
       </AnimatePresence>
 
-      <main className="p-8 max-w-[1600px] mx-auto min-h-[70vh]">
-        <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+      <main className="mx-auto min-h-[70vh] max-w-[1600px] p-4 sm:p-8">
+        <header className="mb-8 flex flex-col gap-4 md:mb-10 md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl font-black tracking-tighter italic text-slate-900">
               Explorar Imóveis
             </h1>
-            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Recife e Região Metropolitana</p>
+            <p className="mt-1 text-xs font-bold uppercase tracking-widest text-slate-400">Recife e Região Metropolitana</p>
           </div>
-          <div className="bg-slate-100 px-4 py-2 rounded-full text-[10px] font-black text-slate-500 uppercase tracking-widest">
+          <div className="w-fit rounded-full bg-slate-100 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
             {filteredData.length} resultados encontrados
           </div>
         </header>
 
         {loading ? (
-          <div className="py-40 flex flex-col items-center justify-center gap-6">
+          <div className="flex flex-col items-center justify-center gap-6 py-24 sm:py-40">
             <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="text-sky-700">
               <FiMaximize2 size={40} />
             </motion.div>
-            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 animate-pulse">Carregando imóveis...</p>
+            <p className="animate-pulse text-[10px] font-black uppercase tracking-widest text-slate-400">Carregando imóveis...</p>
           </div>
         ) : filteredData.length === 0 ? (
-          <div className="py-40 flex flex-col items-center justify-center text-center">
-            <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center text-slate-200 mb-6">
+          <div className="flex flex-col items-center justify-center py-24 text-center sm:py-40">
+            <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-50 text-slate-200">
               <FiSearch size={40} />
             </div>
             <p className="text-lg font-bold text-slate-900">Nenhum imóvel encontrado</p>
-            <p className="text-sm text-slate-400 mt-2">Tente ajustar os filtros ou limpar a busca.</p>
-            <button onClick={() => setFilters({ search: "", type: "Todos", beds: 0, minSize: 0, maxPrice: 20000, parking: 0 })} className="mt-6 text-sky-700 font-bold text-xs uppercase tracking-widest border-b border-sky-700 pb-1 cursor-pointer">Limpar Filtros</button>
+            <p className="mt-2 text-sm text-slate-400">Tente ajustar os filtros ou limpar a busca.</p>
+            <button onClick={() => setFilters({ search: "", type: "Todos", beds: 0, minSize: 0, maxPrice: 20000, parking: 0 })} className="mt-6 cursor-pointer border-b border-sky-700 pb-1 text-xs font-bold uppercase tracking-widest text-sky-700">Limpar Filtros</button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filteredData.map(p => (
               <motion.div layout key={p.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="group cursor-pointer">
-                <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-5 shadow-2xl shadow-slate-200/50">
-                  <img src={p.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out" alt={p.name} />
-                  {p.isExclusive && <div className="absolute top-6 left-6 bg-sky-800 text-white px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest">Exclusividade</div>}
-                  <div className="absolute bottom-6 left-6 right-6 p-6 bg-white/10 backdrop-blur-xl rounded-[2rem] border border-white/20 text-white shadow-2xl">
-                    <p className="text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">{p.neighborhood}</p>
-                    <div className="flex justify-between items-end">
+                <div className="relative mb-5 aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-2xl shadow-slate-200/50">
+                  <img src={p.image} className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110" alt={p.name} />
+                  {p.isExclusive && <div className="absolute left-6 top-6 rounded-lg bg-sky-800 px-3 py-1 text-[9px] font-black uppercase tracking-widest text-white">Exclusividade</div>}
+                  <div className="absolute bottom-6 left-6 right-6 rounded-[2rem] border border-white/20 bg-white/10 p-5 text-white shadow-2xl backdrop-blur-xl sm:p-6">
+                    <p className="mb-1 text-[10px] font-black uppercase tracking-widest opacity-80">{p.neighborhood}</p>
+                    <div className="flex items-end justify-between gap-3">
                       <p className="text-2xl font-black leading-none">R$ {p.price.toLocaleString()}</p>
                       <FiChevronRight size={20} />
                     </div>
                   </div>
                 </div>
                 <div className="px-2">
-                  <h3 className="font-black text-slate-900 text-lg leading-tight group-hover:text-sky-700 transition-colors">{p.name}</h3>
-                  <div className="flex gap-4 text-[10px] font-black text-slate-400 uppercase mt-3 tracking-widest">
-                    <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-sky-800" /> {p.size}m²</span>
-                    <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-sky-800" /> {p.beds} Dorms</span>
-                    <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-sky-800" /> {p.parking} Vagas</span>
+                  <h3 className="text-lg font-black leading-tight text-slate-900 transition-colors group-hover:text-sky-700">{p.name}</h3>
+                  <div className="mt-3 flex flex-wrap gap-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                    <span className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-sky-800" /> {p.size}m²</span>
+                    <span className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-sky-800" /> {p.beds} Dorms</span>
+                    <span className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-sky-800" /> {p.parking} Vagas</span>
                   </div>
-                  <div className="mt-4 flex items-center gap-3">
-                    <button onClick={() => setSelectedProperty(p)} className="inline-flex items-center gap-2 cursor-pointer rounded-2xl bg-slate-900 px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-sky-800 transition-all">
+                  <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <button onClick={() => setSelectedProperty(p)} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all cursor-pointer hover:bg-sky-800">
                       Ver resumo
                     </button>
-                    <button onClick={() => navigate(`/property/p-${p.id}`)} className="inline-flex items-center gap-2 cursor-pointer rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700 hover:border-sky-700 hover:text-sky-700 transition-all">
+                    <button onClick={() => navigate(`/property/p-${p.id}`)} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700 transition-all cursor-pointer hover:border-sky-700 hover:text-sky-700">
                       Abrir detalhe
                     </button>
                   </div>
@@ -327,55 +340,55 @@ export const Explores = () => {
 
       <AnimatePresence>
         {selectedProperty && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0F172A]/90 backdrop-blur-sm">
-            <motion.div initial={{ scale: 0.9, y: 30 }} animate={{ scale: 1, y: 0 }} className="bg-white w-full max-w-5xl max-h-[90vh] rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-2xl">
-              <div className="w-full md:w-1/2 relative h-64 md:h-auto shrink-0">
-                <img src={selectedProperty.image} className="w-full h-full object-cover" alt="" />
-                <button onClick={() => setSelectedProperty(null)} className="absolute top-8 left-8 bg-white/20 backdrop-blur-md p-4 cursor-pointer rounded-full text-white hover:bg-white hover:text-slate-900 transition-all shadow-xl"><FiX size={20} /></button>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0F172A]/90 p-2 backdrop-blur-sm sm:p-4">
+            <motion.div initial={{ scale: 0.9, y: 30 }} animate={{ scale: 1, y: 0 }} className="flex max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-[2rem] bg-white shadow-2xl md:flex-row sm:rounded-[3rem]">
+              <div className="relative h-64 w-full shrink-0 md:h-auto md:w-1/2">
+                <img src={selectedProperty.image} className="h-full w-full object-cover" alt="" />
+                <button onClick={() => setSelectedProperty(null)} className="absolute left-4 top-4 rounded-full bg-white/20 p-3 text-white shadow-xl backdrop-blur-md transition-all cursor-pointer hover:bg-white hover:text-slate-900 sm:left-8 sm:top-8 sm:p-4"><FiX size={20} /></button>
               </div>
 
-              <div className="flex-1 p-10 md:p-14 overflow-y-auto scrollbar-hide">
-                <header className="flex justify-between items-start mb-10">
-                  <div>
-                    <h2 className="text-3xl font-black italic text-slate-900 leading-none mb-3">{selectedProperty.name}</h2>
-                    <p className="text-sky-800 font-bold text-xs uppercase tracking-[0.2em] flex items-center gap-2"><FiMapPin /> {selectedProperty.neighborhood}, {selectedProperty.location}</p>
+              <div className="scrollbar-hide flex-1 overflow-y-auto p-6 sm:p-10 md:p-14">
+                <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                  <div className="min-w-0">
+                    <h2 className="mb-3 text-2xl font-black italic leading-none text-slate-900 sm:text-3xl">{selectedProperty.name}</h2>
+                    <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-sky-800"><FiMapPin /> {selectedProperty.neighborhood}, {selectedProperty.location}</p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-3xl font-black text-slate-900">R$ {selectedProperty.price.toLocaleString()}</p>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">+ R$ {selectedProperty.condo + selectedProperty.iptu} taxas</p>
+                  <div className="text-left sm:text-right">
+                    <p className="text-2xl font-black text-slate-900 sm:text-3xl">R$ {selectedProperty.price.toLocaleString()}</p>
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-400">+ R$ {selectedProperty.condo + selectedProperty.iptu} taxas</p>
                   </div>
                 </header>
 
-                <div className="grid grid-cols-4 gap-4 py-8 border-y border-slate-100 mb-10 text-center">
-                  <div><p className="text-xl font-black text-slate-900">{selectedProperty.size}m²</p><p className="text-[9px] font-bold text-slate-400 uppercase">Área</p></div>
-                  <div className="border-x border-slate-100"><p className="text-xl font-black text-slate-900">{selectedProperty.beds}</p><p className="text-[9px] font-bold text-slate-400 uppercase">Quartos</p></div>
-                  <div className="border-r border-slate-100"><p className="text-xl font-black text-slate-900">{selectedProperty.baths}</p><p className="text-[9px] font-bold text-slate-400 uppercase">Suítes</p></div>
-                  <div><p className="text-xl font-black text-slate-900">{selectedProperty.parking}</p><p className="text-[9px] font-bold text-slate-400 uppercase">Vagas</p></div>
+                <div className="mb-10 grid grid-cols-2 gap-3 border-y border-slate-100 py-6 text-center md:grid-cols-4">
+                  <div className="rounded-2xl bg-slate-50 px-4 py-4"><p className="text-xl font-black text-slate-900">{selectedProperty.size}m²</p><p className="text-[9px] font-bold uppercase text-slate-400">Área</p></div>
+                  <div className="rounded-2xl bg-slate-50 px-4 py-4"><p className="text-xl font-black text-slate-900">{selectedProperty.beds}</p><p className="text-[9px] font-bold uppercase text-slate-400">Quartos</p></div>
+                  <div className="rounded-2xl bg-slate-50 px-4 py-4"><p className="text-xl font-black text-slate-900">{selectedProperty.baths}</p><p className="text-[9px] font-bold uppercase text-slate-400">Suítes</p></div>
+                  <div className="rounded-2xl bg-slate-50 px-4 py-4"><p className="text-xl font-black text-slate-900">{selectedProperty.parking}</p><p className="text-[9px] font-bold uppercase text-slate-400">Vagas</p></div>
                 </div>
 
                 <div className="space-y-10">
                   <section>
-                    <h4 className="text-[10px] font-black uppercase text-slate-900 mb-4 flex items-center gap-2 tracking-widest"><FiInfo className="text-sky-700" /> Memorial Descritivo</h4>
-                    <p className="text-sm text-slate-500 leading-relaxed italic border-l-4 border-sky-100 pl-6">"{selectedProperty.description}"</p>
+                    <h4 className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-900"><FiInfo className="text-sky-700" /> Memorial Descritivo</h4>
+                    <p className="border-l-4 border-sky-100 pl-6 text-sm italic leading-relaxed text-slate-500">"{selectedProperty.description}"</p>
                   </section>
 
-                  <section className="grid grid-cols-2 gap-8">
+                  <section className="grid grid-cols-1 gap-8 md:grid-cols-2">
                     <div>
-                      <h4 className="text-[10px] font-black uppercase text-slate-900 mb-4 tracking-widest">Infraestrutura</h4>
+                      <h4 className="mb-4 text-[10px] font-black uppercase tracking-widest text-slate-900">Infraestrutura</h4>
                       <div className="grid gap-3">
                         {selectedProperty.features.map(f => <div key={f} className="flex items-center gap-2 text-[11px] font-bold text-slate-600"><FiCheckCircle className="text-sky-700" /> {f}</div>)}
                       </div>
                     </div>
                     <div>
-                      <h4 className="text-[10px] font-black uppercase text-slate-900 mb-4 tracking-widest">Composição</h4>
+                      <h4 className="mb-4 text-[10px] font-black uppercase tracking-widest text-slate-900">Composição</h4>
                       <div className="grid gap-3">
-                        {selectedProperty.rooms.map(r => <div key={r} className="flex items-center gap-2 text-[11px] font-bold text-slate-600"><div className="w-1.5 h-1.5 rounded-full bg-sky-800" /> {r}</div>)}
+                        {selectedProperty.rooms.map(r => <div key={r} className="flex items-center gap-2 text-[11px] font-bold text-slate-600"><div className="h-1.5 w-1.5 rounded-full bg-sky-800" /> {r}</div>)}
                       </div>
                     </div>
                   </section>
                 </div>
 
-                <button className="w-full bg-slate-900 text-white py-6  cursor-pointer rounded-[2rem] mt-12 font-black uppercase text-xs tracking-[0.3em] hover:bg-sky-800 hover:text-white transition-all shadow-2xl shadow-slate-200">
+                <button className="mt-10 w-full cursor-pointer rounded-[2rem] bg-slate-900 py-5 text-xs font-black uppercase tracking-[0.3em] text-white shadow-2xl shadow-slate-200 transition-all hover:bg-sky-800 sm:mt-12 sm:py-6">
                   Agendar Visita
                 </button>
               </div>

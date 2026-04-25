@@ -19,37 +19,37 @@ export const Forgot = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a] flex items-center justify-center p-6">
-      <motion.div 
+    <div className="flex min-h-screen items-center justify-center bg-[#0f172a] p-4 sm:p-6">
+      <motion.div
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md bg-white/5 backdrop-blur-xl p-10 rounded-[2.5rem] border border-white/10"
+        className="w-full max-w-md rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:rounded-[2.5rem] sm:p-10"
       >
-        <button onClick={() => navigate('/login')} className="cursor-pointer text-slate-500 hover:text-white flex items-center gap-2 mb-6 transition-all">
-          <ArrowLeft size={16} className='cursor-pointer' /> <span className="text-[10px] font-bold uppercase tracking-widest cursor-pointer">Voltar</span>
+        <button onClick={() => navigate('/login')} className="mb-6 flex cursor-pointer items-center gap-2 text-slate-500 transition-all hover:text-white">
+          <ArrowLeft size={16} className='cursor-pointer' /> <span className="cursor-pointer text-[10px] font-bold uppercase tracking-widest">Voltar</span>
         </button>
 
-        <h2 className="text-2xl font-bold text-white mb-2">Recuperar Senha</h2>
-        <p className="text-slate-400 text-sm mb-8">Digite seu e-mail para receber as instruções.</p>
+        <h2 className="mb-2 text-xl font-bold text-white sm:text-2xl">Recuperar Senha</h2>
+        <p className="mb-8 text-sm text-slate-400">Digite seu e-mail para receber as instruções.</p>
 
         {status === 'success' ? (
-          <div className="text-green-400 font-bold text-center p-4 bg-green-400/10 rounded-2xl">
+          <div className="rounded-2xl bg-green-400/10 p-4 text-center font-bold text-green-400">
             E-mail enviado com sucesso!
           </div>
         ) : (
           <form onSubmit={handleRecover} className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[9px] uppercase font-bold text-slate-500 tracking-widest">E-mail</label>
+              <label className="text-[9px] font-bold uppercase tracking-widest text-slate-500">E-mail</label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-600" size={18} />
-                <input 
+                <input
                   type="email" required
                   value={email}
-                  className="w-full bg-[#0f172a] border border-white/5 rounded-xl p-4 pl-12 text-white outline-none focus:border-[#5b89a6]"
+                  className="w-full rounded-xl border border-white/5 bg-[#0f172a] p-4 pl-12 text-white outline-none focus:border-[#5b89a6]"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
-            <button className=" cursor-pointer w-full bg-[#5b89a6] text-white py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-[#4a728a] transition-all">
+            <button className="w-full cursor-pointer rounded-xl bg-[#5b89a6] py-4 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-[#4a728a]">
               {status === 'loading' ? 'Enviando...' : 'Enviar Link'}
             </button>
           </form>

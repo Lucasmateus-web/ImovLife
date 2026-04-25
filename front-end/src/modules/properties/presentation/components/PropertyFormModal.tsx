@@ -62,15 +62,15 @@ export const PropertyFormModal = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 18 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[110] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[110] flex items-center justify-center p-2 sm:p-4"
           >
-            <div className="w-full max-w-5xl max-h-[92vh] overflow-hidden rounded-[2.5rem] bg-white shadow-2xl border border-slate-100 flex flex-col">
-              <div className="px-8 py-6 border-b border-slate-100 flex items-start justify-between gap-6">
+            <div className="flex max-h-[96vh] w-full max-w-5xl flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-2xl sm:rounded-[2.5rem]">
+              <div className="flex items-start justify-between gap-4 border-b border-slate-100 px-4 py-5 sm:px-8 sm:py-6">
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#5b89a6]">
                     Gestão de imóveis
                   </p>
-                  <h2 className="text-3xl font-black tracking-tighter text-slate-900 mt-2">
+                  <h2 className="mt-2 text-2xl font-black tracking-tighter text-slate-900 sm:text-3xl">
                     {isEditing ? "Editar imóvel" : "Cadastrar novo imóvel"}
                   </h2>
                   <p className="text-sm text-slate-400 mt-2">
@@ -86,7 +86,7 @@ export const PropertyFormModal = ({
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-8 space-y-8">
+              <div className="flex-1 overflow-y-auto p-4 space-y-8 sm:p-8">
                 {errorMessage && (
                   <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 flex items-start gap-3 text-left">
                     <FiAlertCircle className="text-red-500 mt-0.5 shrink-0" />
@@ -203,7 +203,7 @@ export const PropertyFormModal = ({
                         <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 mb-4">
                           <FiImage /> Pré-visualização
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
                           {photos.map((photo, index) => (
                             <div key={`${photo}-${index}`} className="relative overflow-hidden rounded-[20px] bg-white border border-slate-100 aspect-[4/3]">
                               <img src={photo} alt={`Foto ${index + 1}`} className="w-full h-full object-cover" />
@@ -230,12 +230,12 @@ export const PropertyFormModal = ({
                 </section>
               </div>
 
-              <div className="px-8 py-6 border-t border-slate-100 flex items-center justify-between gap-4 bg-white">
-                <button onClick={onClose} className="px-6 py-3 rounded-2xl text-sm font-bold text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer">
+              <div className="flex flex-col-reverse gap-4 border-t border-slate-100 bg-white px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
+                <button onClick={onClose} className="w-full rounded-2xl px-6 py-3 text-sm font-bold text-slate-500 transition-all cursor-pointer hover:bg-slate-100 hover:text-slate-900 sm:w-auto">
                   Cancelar
                 </button>
 
-                <button onClick={onSubmit} disabled={isSubmitting} className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] flex items-center gap-3 hover:bg-[#5b89a6] transition-all shadow-lg shadow-slate-900/10 cursor-pointer disabled:opacity-60 disabled:cursor-wait">
+                <button onClick={onSubmit} disabled={isSubmitting} className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-8 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-slate-900/10 transition-all cursor-pointer hover:bg-[#5b89a6] disabled:cursor-wait disabled:opacity-60 sm:w-auto">
                   {isSubmitting && <FiLoader className="animate-spin" size={16} />}
                   {isSubmitting ? "Enviando ao back-end" : isEditing ? "Salvar alterações" : "Cadastrar imóvel"}
                 </button>

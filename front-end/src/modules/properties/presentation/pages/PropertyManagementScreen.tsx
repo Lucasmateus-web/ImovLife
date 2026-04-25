@@ -395,42 +395,42 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
   }
 
   return (
-    <div className="h-screen bg-[#F8FAFC] flex font-sans overflow-hidden">
-      <aside className="w-20 lg:w-72 bg-[#1e293b] flex flex-col justify-between py-10 shadow-2xl z-30 transition-all">
-        <div className="space-y-12">
-          <div className="px-6 flex items-center gap-3">
-            <img src={logo} alt="ImovLife" className="h-14 w-auto object-contain cursor-pointer" />
+    <div className="flex min-h-screen flex-col overflow-x-hidden bg-[#F8FAFC] font-sans lg:h-screen lg:flex-row lg:overflow-hidden">
+      <aside className="z-30 flex w-full flex-col justify-between gap-6 bg-[#1e293b] px-4 py-4 shadow-2xl transition-all lg:w-72 lg:px-0 lg:py-10">
+        <div className="space-y-6 lg:space-y-12">
+          <div className="flex items-center gap-3 px-2 lg:px-6">
+            <img src={logo} alt="ImovLife" className="h-12 w-auto object-contain cursor-pointer lg:h-14" />
           </div>
 
-          <nav className="px-4 space-y-3">
-            <button onClick={() => setActivePanel("brokers")} className={`w-full flex items-center gap-4 p-4 cursor-pointer rounded-2xl transition-all ${activePanel === "brokers" ? "bg-[#5b89a6] text-white shadow-xl shadow-[#5b89a6]/30" : "text-slate-400 hover:bg-white/5"}`}>
+          <nav className="flex gap-3 overflow-x-auto px-0 lg:block lg:space-y-3 lg:px-4">
+            <button onClick={() => setActivePanel("brokers")} className={`flex min-w-[210px] items-center gap-4 rounded-2xl p-4 transition-all cursor-pointer lg:w-full lg:min-w-0 ${activePanel === "brokers" ? "bg-[#5b89a6] text-white shadow-xl shadow-[#5b89a6]/30" : "text-slate-400 hover:bg-white/5"}`}>
               <FiUser className="text-xl" />
-              <span className="hidden lg:block font-bold text-xs uppercase tracking-widest">Corretores</span>
+              <span className="font-bold text-xs uppercase tracking-widest">Corretores</span>
             </button>
-            <button onClick={() => setActivePanel("properties")} className={`w-full flex items-center gap-4 p-4 cursor-pointer rounded-2xl transition-all ${activePanel === "properties" ? "bg-[#5b89a6] text-white shadow-xl shadow-[#5b89a6]/30" : "text-slate-400 hover:bg-white/5"}`}>
+            <button onClick={() => setActivePanel("properties")} className={`flex min-w-[210px] items-center gap-4 rounded-2xl p-4 transition-all cursor-pointer lg:w-full lg:min-w-0 ${activePanel === "properties" ? "bg-[#5b89a6] text-white shadow-xl shadow-[#5b89a6]/30" : "text-slate-400 hover:bg-white/5"}`}>
               <FiHome className="text-xl" />
-              <span className="hidden lg:block font-bold text-xs uppercase tracking-widest">Gestão de imóveis</span>
+              <span className="font-bold text-xs uppercase tracking-widest">Gestão de imóveis</span>
             </button>
-            <button onClick={() => setActivePanel("permissions")} className={`w-full flex items-center gap-4 p-4 cursor-pointer rounded-2xl transition-all ${activePanel === "permissions" ? "bg-[#5b89a6] text-white shadow-xl shadow-[#5b89a6]/30" : "text-slate-400 hover:bg-white/5"}`}>
+            <button onClick={() => setActivePanel("permissions")} className={`flex min-w-[210px] items-center gap-4 rounded-2xl p-4 transition-all cursor-pointer lg:w-full lg:min-w-0 ${activePanel === "permissions" ? "bg-[#5b89a6] text-white shadow-xl shadow-[#5b89a6]/30" : "text-slate-400 hover:bg-white/5"}`}>
               <FiShield className="text-xl" />
-              <span className="hidden lg:block font-bold text-xs uppercase tracking-widest">Ajustes e permissões</span>
+              <span className="font-bold text-xs uppercase tracking-widest">Ajustes e permissões</span>
             </button>
           </nav>
         </div>
 
-        <div className="px-4">
-          <button onClick={() => window.location.href = "/"} className="w-full flex items-center gap-4 p-4 rounded-2xl text-slate-500 hover:text-red-400 hover:bg-red-400/5 transition-all cursor-pointer">
+        <div className="px-0 lg:px-4">
+          <button onClick={() => window.location.href = "/"} className="flex w-full items-center gap-4 rounded-2xl p-4 text-slate-500 transition-all cursor-pointer hover:bg-red-400/5 hover:text-red-400">
             <FiLogOut className="text-xl" />
-            <span className="hidden lg:block font-bold text-xs uppercase tracking-widest">Sair</span>
+            <span className="font-bold text-xs uppercase tracking-widest">Sair</span>
           </button>
         </div>
       </aside>
 
-      <main className="flex-1 flex flex-col overflow-hidden">
-        <header className="bg-white border-b border-slate-100 px-10 py-8 flex items-end justify-between gap-6">
+      <main className="flex flex-1 flex-col overflow-hidden">
+        <header className="flex flex-col gap-4 border-b border-slate-100 bg-white px-4 py-6 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-10 lg:py-8">
           <div className="text-left">
             <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#5b89a6]">Painel {role}</p>
-            <h1 className="text-4xl font-black text-slate-900 tracking-tighter mt-1">
+            <h1 className="mt-1 text-3xl font-black tracking-tighter text-slate-900 sm:text-4xl">
               {activePanel === "properties" ? "Gestão de Imóveis" : activePanel === "brokers" ? "Corretores" : "Ajustes e permissões"}
             </h1>
             <p className="text-sm text-slate-400 mt-2">
@@ -445,21 +445,21 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
           </div>
 
           {activePanel === "properties" ? (
-            <button onClick={openCreate} className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] flex items-center gap-3 hover:bg-[#5b89a6] transition-all shadow-lg shadow-slate-900/10 cursor-pointer">
+            <button onClick={openCreate} className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-8 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-slate-900/10 transition-all cursor-pointer hover:bg-[#5b89a6] sm:w-auto">
               <FiPlus size={16} /> Cadastrar novo imóvel
             </button>
           ) : activePanel === "brokers" ? (
-            <button className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] flex items-center gap-3 hover:bg-[#5b89a6] transition-all shadow-lg shadow-slate-900/10 cursor-pointer">
+            <button className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-8 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-slate-900/10 transition-all cursor-pointer hover:bg-[#5b89a6] sm:w-auto">
               <FiPlus size={16} /> Novo corretor
             </button>
           ) : (
-            <button className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] flex items-center gap-3 hover:bg-[#5b89a6] transition-all shadow-lg shadow-slate-900/10 cursor-pointer">
+            <button className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-8 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-slate-900/10 transition-all cursor-pointer hover:bg-[#5b89a6] sm:w-auto">
               <FiShield size={16} /> Revisar acessos
             </button>
           )}
         </header>
 
-        <div className="flex-1 p-10 flex flex-col gap-6 overflow-hidden">
+        <div className="flex flex-1 flex-col gap-6 overflow-auto p-4 sm:p-6 lg:overflow-hidden lg:p-10">
           {activePanel === "properties" ? (
             <>
           {feedback && (
@@ -472,8 +472,8 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
             </div>
           )}
 
-          <section className="grid grid-cols-1 xl:grid-cols-[1.5fr_repeat(4,minmax(0,0.7fr))] gap-4">
-            <div className="relative group xl:col-span-1">
+          <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-[1.5fr_repeat(4,minmax(0,0.7fr))]">
+            <div className="relative group sm:col-span-2 xl:col-span-1">
               <FiSearch className={`absolute left-5 top-1/2 -translate-y-1/2 transition-colors ${searchTerm ? "text-[#5b89a6]" : "text-slate-400"}`} />
               <input
                 type="text"
@@ -490,14 +490,14 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
             <select value={selectedType} onChange={(e) => {
               setSelectedType(e.target.value as PropertyType | "Todos");
               setCurrentPage(1);
-            }} className="bg-white border border-slate-200 rounded-[20px] px-5 text-sm text-slate-700 font-medium outline-none focus:border-[#5b89a6] cursor-pointer">
+            }} className="min-h-[56px] rounded-[20px] border border-slate-200 bg-white px-5 text-sm font-medium text-slate-700 outline-none focus:border-[#5b89a6] cursor-pointer">
               {PROPERTY_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
             </select>
 
             <select value={priceRange} onChange={(e) => {
               setPriceRange(e.target.value);
               setCurrentPage(1);
-            }} className="bg-white border border-slate-200 rounded-[20px] px-5 text-sm text-slate-700 font-medium outline-none focus:border-[#5b89a6] cursor-pointer">
+            }} className="min-h-[56px] rounded-[20px] border border-slate-200 bg-white px-5 text-sm font-medium text-slate-700 outline-none focus:border-[#5b89a6] cursor-pointer">
               <option value="">Faixa de preço</option>
               <option value="0-500000">Até R$ 500 mil</option>
               <option value="500001-1000000">R$ 500 mil a R$ 1 mi</option>
@@ -507,7 +507,7 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
             <select value={minBedrooms} onChange={(e) => {
               setMinBedrooms(e.target.value);
               setCurrentPage(1);
-            }} className="bg-white border border-slate-200 rounded-[20px] px-5 text-sm text-slate-700 font-medium outline-none focus:border-[#5b89a6] cursor-pointer">
+            }} className="min-h-[56px] rounded-[20px] border border-slate-200 bg-white px-5 text-sm font-medium text-slate-700 outline-none focus:border-[#5b89a6] cursor-pointer">
               <option value="">Quartos mínimos</option>
               <option value="1">1+ quartos</option>
               <option value="2">2+ quartos</option>
@@ -515,7 +515,7 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
               <option value="4">4+ quartos</option>
             </select>
 
-            <select value={sortBy} onChange={(e) => setSortBy(e.target.value as SortOption)} className="bg-white border border-slate-200 rounded-[20px] px-5 text-sm text-slate-700 font-medium outline-none focus:border-[#5b89a6] cursor-pointer">
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value as SortOption)} className="min-h-[56px] rounded-[20px] border border-slate-200 bg-white px-5 text-sm font-medium text-slate-700 outline-none focus:border-[#5b89a6] cursor-pointer">
               {SORT_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
             </select>
           </section>
@@ -535,17 +535,17 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
             </button>
           </section>
 
-          <div className="grid grid-cols-1 xl:grid-cols-[1.35fr_0.85fr] gap-6 flex-1 overflow-hidden">
-            <section className="bg-white rounded-[40px] border border-slate-100 shadow-sm overflow-hidden flex flex-col min-h-0">
-              <div className="px-10 py-6 border-b border-slate-100 flex items-center justify-between">
+          <div className="grid flex-1 grid-cols-1 gap-6 overflow-hidden xl:grid-cols-[1.35fr_0.85fr]">
+            <section className="flex min-h-0 flex-col overflow-hidden rounded-[28px] border border-slate-100 bg-white shadow-sm lg:rounded-[40px]">
+              <div className="flex items-center justify-between border-b border-slate-100 px-6 py-6 lg:px-10">
                 <div>
                   <h2 className="text-lg font-black tracking-tight text-slate-900">Listagem operacional</h2>
                   <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Criar, editar, visualizar, ativar e desativar imóveis</p>
                 </div>
               </div>
 
-              <div className="overflow-y-auto flex-1">
-                <table className="w-full text-left">
+              <div className="flex-1 overflow-auto">
+                <table className="w-full min-w-[860px] text-left">
                   <thead className="bg-slate-50/50 sticky top-0 z-10 border-b border-slate-50">
                     <tr>
                       <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Imóvel</th>
@@ -618,11 +618,11 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
                 </table>
               </div>
 
-              <div className="px-8 py-5 border-t border-slate-100 flex items-center justify-between gap-4 bg-white">
+              <div className="flex flex-col gap-4 border-t border-slate-100 bg-white px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
                   Exibindo {paginatedProperties.length} de {filteredProperties.length} imóveis filtrados
                 </p>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <button onClick={() => setCurrentPage((page) => Math.max(1, page - 1))} disabled={currentPage === 1} className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-slate-900 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all">
                     <FiArrowLeft size={14} /> Anterior
                   </button>
@@ -633,15 +633,15 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
               </div>
             </section>
 
-            <aside className="space-y-6 overflow-y-auto pr-1">
-              <div className="bg-white rounded-[40px] border border-slate-100 shadow-sm p-8 text-left">
+            <aside className="space-y-6 overflow-y-auto lg:pr-1">
+              <div className="rounded-[28px] border border-slate-100 bg-white p-6 text-left shadow-sm lg:rounded-[40px] lg:p-8">
                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Detalhes do imóvel</p>
                 {selectedProperty ? (
                   <div className="mt-5 space-y-5 text-sm text-slate-500">
                     <img src={selectedProperty.imageUrl} alt={selectedProperty.title} className="w-full h-56 rounded-[28px] object-cover" />
 
                     <div>
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div>
                           <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#5b89a6]">{selectedProperty.mode}</p>
                           <h4 className="text-2xl font-black tracking-tighter text-slate-900 mt-2">{selectedProperty.title}</h4>
@@ -655,7 +655,7 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
                       <p className="mt-3 text-2xl font-black tracking-tight text-slate-900">{currency(selectedProperty.price)}</p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    <div className="grid grid-cols-1 gap-3 text-[10px] font-black uppercase tracking-widest text-slate-500 sm:grid-cols-2">
                       <div className="rounded-2xl bg-slate-50 px-4 py-3">{selectedProperty.type}</div>
                       <div className="rounded-2xl bg-slate-50 px-4 py-3">{selectedProperty.bedrooms} quartos</div>
                       <div className="rounded-2xl bg-slate-50 px-4 py-3">{selectedProperty.bathrooms} banheiros</div>
@@ -666,7 +666,7 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
 
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3">Fotos cadastradas</p>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         {selectedPhotos.map((photo, index) => (
                           <div key={`${photo}-${index}`} className="overflow-hidden rounded-[22px] border border-slate-100 bg-slate-50 aspect-[4/3]">
                             <img src={photo} alt={`Foto ${index + 1}`} className="w-full h-full object-cover" />
@@ -686,7 +686,7 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                       <div className="rounded-[24px] border border-slate-100 p-4">
                         <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">Corretor</p>
                         <p className="text-sm font-bold text-slate-900 mt-2">{selectedProperty.brokerName || "Não vinculado"}</p>
@@ -710,16 +710,16 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
           </div>
             </>
           ) : activePanel === "brokers" ? (
-            <div className="grid grid-cols-1 xl:grid-cols-[1.15fr_0.85fr] gap-6 flex-1 overflow-hidden">
-              <section className="bg-white rounded-[40px] border border-slate-100 shadow-sm overflow-hidden flex flex-col min-h-0">
-                <div className="px-10 py-6 border-b border-slate-100 flex items-center justify-between">
+            <div className="grid flex-1 grid-cols-1 gap-6 overflow-hidden xl:grid-cols-[1.15fr_0.85fr]">
+              <section className="flex min-h-0 flex-col overflow-hidden rounded-[28px] border border-slate-100 bg-white shadow-sm lg:rounded-[40px]">
+                <div className="flex items-center justify-between border-b border-slate-100 px-6 py-6 lg:px-10">
                   <div>
                     <h2 className="text-lg font-black tracking-tight text-slate-900">Carteira de corretores</h2>
                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Equipe ativa, cobertura e imóveis vinculados</p>
                   </div>
                 </div>
-                <div className="overflow-y-auto flex-1">
-                  <table className="w-full text-left">
+                <div className="flex-1 overflow-auto">
+                  <table className="w-full min-w-[640px] text-left">
                     <thead className="bg-slate-50/50 sticky top-0 z-10 border-b border-slate-50">
                       <tr>
                         <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Corretor</th>
@@ -753,8 +753,8 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
                 </div>
               </section>
 
-              <aside className="space-y-6 overflow-y-auto pr-1">
-                <div className="bg-white rounded-[40px] border border-slate-100 shadow-sm p-8 text-left">
+              <aside className="space-y-6 overflow-y-auto lg:pr-1">
+                <div className="rounded-[28px] border border-slate-100 bg-white p-6 text-left shadow-sm lg:rounded-[40px] lg:p-8">
                   <p className="text-[10px] font-black uppercase tracking-widest text-[#5b89a6]">Operação dos corretores</p>
                   <h3 className="text-2xl font-black tracking-tighter text-slate-900 mt-3">Acompanhamento da equipe</h3>
                   <ul className="mt-6 space-y-4 text-sm text-slate-500 leading-relaxed">
@@ -766,8 +766,8 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
               </aside>
             </div>
           ) : (
-            <div className="grid grid-cols-1 xl:grid-cols-[1.15fr_0.85fr] gap-6 flex-1 overflow-hidden">
-              <section className="bg-white rounded-[40px] border border-slate-100 shadow-sm p-8 overflow-y-auto">
+            <div className="grid flex-1 grid-cols-1 gap-6 overflow-hidden xl:grid-cols-[1.15fr_0.85fr]">
+              <section className="overflow-y-auto rounded-[28px] border border-slate-100 bg-white p-6 shadow-sm lg:rounded-[40px] lg:p-8">
                 <div>
                   <h2 className="text-lg font-black tracking-tight text-slate-900">Perfis e acessos</h2>
                   <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Permissões previstas no painel conforme o fluxo do desafio</p>
@@ -789,8 +789,8 @@ export const PropertyManagementScreen = ({ role = "ADMIN", userName = "Lucas Lim
                 </div>
               </section>
 
-              <aside className="space-y-6 overflow-y-auto pr-1">
-                <div className="bg-white rounded-[40px] border border-slate-100 shadow-sm p-8 text-left">
+              <aside className="space-y-6 overflow-y-auto lg:pr-1">
+                <div className="rounded-[28px] border border-slate-100 bg-white p-6 text-left shadow-sm lg:rounded-[40px] lg:p-8">
                   <p className="text-[10px] font-black uppercase tracking-widest text-[#5b89a6]">Ajustes operacionais</p>
                   <h3 className="text-2xl font-black tracking-tighter text-slate-900 mt-3">Revisão do painel</h3>
                   <ul className="mt-6 space-y-4 text-sm text-slate-500 leading-relaxed">

@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../../../assets/imovlife.png"
 
 export const PageCorrect = () => {
-    const location = useLocation();
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [direction, setDirection] = useState(0);
@@ -68,14 +67,31 @@ export const PageCorrect = () => {
     };
 
     const inputClass = (name: string) => `
-        w-full bg-transparent border-b-2 py-4 outline-none font-bold text-xl transition-all duration-300
+        w-full bg-transparent border-b-2 py-4 outline-none font-bold text-lg transition-all duration-300 sm:text-xl
         placeholder:text-slate-500 text-slate-900
         ${errors.includes(name) ? 'border-red-500 bg-red-50/50 px-2' : 'border-slate-100 focus:border-[#5b89a6]'}
     `;
 
     return (
-        <div className="flex min-h-screen bg-white text-left overflow-hidden">
-            <aside className="hidden lg:flex w-[420px] bg-[#1e293b] p-16 flex-col justify-between sticky top-0 h-screen">
+        <div className="flex min-h-screen flex-col overflow-hidden bg-white text-left lg:flex-row">
+            <div className="bg-[#1e293b] px-5 py-8 lg:hidden">
+                <img src={logo} alt="ImovLife" className="h-10 w-auto brightness-0 invert cursor-pointer" onClick={() => navigate('/')} />
+                <div className="mt-8 space-y-4">
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#9bc0d8]">Etapa {step} de 3</span>
+                    <h1 className="text-3xl font-black leading-tight tracking-tighter text-white">
+                        {step === 1 && <>Identidade profissional<span className="text-[#5b89a6]">.</span></>}
+                        {step === 2 && <>Atributos do ativo<span className="text-[#5b89a6]">.</span></>}
+                        {step === 3 && <>Narrativa e venda<span className="text-[#5b89a6]">.</span></>}
+                    </h1>
+                    <div className="flex gap-2">
+                        {[1, 2, 3].map((s) => (
+                            <div key={s} className={`h-1.5 flex-1 rounded-full transition-all duration-700 ${s <= step ? 'bg-[#5b89a6]' : 'bg-white/10'}`} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <aside className="sticky top-0 hidden h-screen w-[420px] flex-col justify-between bg-[#1e293b] p-16 lg:flex">
                 <div className="space-y-12">
                     <img src={logo} alt="ImovLife" className="h-14 w-auto brightness-0 invert cursor-pointer" onClick={() => navigate('/')} />
                     <div className="space-y-6">
@@ -102,21 +118,21 @@ export const PageCorrect = () => {
                 </div>
             </aside>
 
-            <main className="flex-1 px-8 py-12 lg:px-24 lg:py-20 flex flex-col justify-center relative">
+            <main className="relative flex flex-1 flex-col justify-center px-4 py-8 sm:px-6 sm:py-10 lg:px-24 lg:py-20">
                 <AnimatePresence>
                     {errors.length > 0 && (
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0 }}
-                            className="absolute top-10 left-1/2 -translate-x-1/2 bg-red-600 text-white px-8 py-3 rounded-full font-bold text-sm shadow-2xl z-50"
+                            className="absolute left-4 right-4 top-4 z-50 rounded-2xl bg-red-600 px-5 py-3 text-center text-sm font-bold text-white shadow-2xl sm:left-1/2 sm:right-auto sm:top-10 sm:w-max sm:min-w-[320px] sm:-translate-x-1/2 sm:rounded-full sm:px-8"
                         >
                             Por favor, preencha os campos obrigatórios
                         </motion.div>
                     )}
                 </AnimatePresence>
 
-                <div className="max-w-2xl mx-auto w-full">
+                <div className="mx-auto w-full max-w-2xl">
                     <AnimatePresence mode="wait" custom={direction}>
                         <motion.div
                             key={step}
@@ -128,10 +144,10 @@ export const PageCorrect = () => {
                             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                         >
                             {step === 1 && (
-                                <div className="space-y-12">
+                                <div className="space-y-10 sm:space-y-12">
                                     <header>
                                         <span className="text-[#5b89a6] font-black text-xs tracking-widest">01. Perfil profissional</span>
-                                        <h2 className="text-4xl font-black text-slate-900 mt-2 tracking-tighter">Dados do corretor</h2>
+                                        <h2 className="mt-2 text-3xl font-black tracking-tighter text-slate-900 sm:text-4xl">Dados do corretor</h2>
                                     </header>
                                     <div className="space-y-10">
                                         <div className="group">
@@ -151,17 +167,17 @@ export const PageCorrect = () => {
                             )}
 
                             {step === 2 && (
-                                <div className="space-y-12">
+                                <div className="space-y-10 sm:space-y-12">
                                     <header>
                                         <span className="text-[#5b89a6] font-black text-xs tracking-widest">02. Ficha técnica</span>
-                                        <h2 className="text-4xl font-black text-slate-900 mt-2 tracking-tighter">Detalhes do imóvel</h2>
+                                        <h2 className="mt-2 text-3xl font-black tracking-tighter text-slate-900 sm:text-4xl">Detalhes do imóvel</h2>
                                     </header>
                                     <div className="space-y-10">
-                                        <div className="grid grid-cols-3 gap-6 bg-slate-900 p-8 rounded-[32px]">
+                                        <div className="grid grid-cols-1 gap-6 rounded-[32px] bg-slate-900 p-6 sm:grid-cols-3 sm:p-8">
                                             {['Quartos', 'Banheiros', 'Vagas'].map((label) => (
                                                 <div key={label}>
                                                     <span className="block text-[10px] font-bold text-slate-400 mb-2">{label}</span>
-                                                    <select 
+                                                    <select
                                                         className="w-full bg-white/10 text-white p-3 rounded-xl font-bold text-sm outline-none border border-white/10 cursor-pointer"
                                                         onChange={e => setFormData({...formData, [label.toLowerCase()]: e.target.value})}
                                                     >
@@ -170,7 +186,7 @@ export const PageCorrect = () => {
                                                 </div>
                                             ))}
                                         </div>
-                                        <div className="grid grid-cols-2 gap-8">
+                                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                                             <div className="group">
                                                 <label className="block text-sm font-bold text-slate-900 mb-2">Área total (m²)</label>
                                                 <input type="number" value={formData.area} onChange={e => setFormData({...formData, area: e.target.value})} placeholder="Ex: 75" className={inputClass("area")} />
@@ -185,10 +201,10 @@ export const PageCorrect = () => {
                             )}
 
                             {step === 3 && (
-                                <div className="space-y-12">
+                                <div className="space-y-10 sm:space-y-12">
                                     <header>
                                         <span className="text-[#5b89a6] font-black text-xs tracking-widest">03. Apresentação</span>
-                                        <h2 className="text-4xl font-black text-slate-900 mt-2 tracking-tighter">Anúncio e narrativa</h2>
+                                        <h2 className="mt-2 text-3xl font-black tracking-tighter text-slate-900 sm:text-4xl">Anúncio e narrativa</h2>
                                     </header>
                                     <div className="space-y-10">
                                         <div className="group">
@@ -197,7 +213,7 @@ export const PageCorrect = () => {
                                         </div>
                                         <div className="group">
                                             <label className="block text-sm font-bold text-slate-900 mb-2">Descrição detalhada</label>
-                                            <textarea rows={6} value={formData.descricao} onChange={e => setFormData({...formData, descricao: e.target.value})} placeholder="Fale sobre os diferenciais e a experiência de morar aqui..." className={`w-full bg-slate-50 rounded-[32px] p-8 outline-none font-bold text-slate-800 resize-none transition-all ${errors.includes("descricao") ? 'border-2 border-red-500 bg-red-50' : 'border border-slate-100 focus:border-[#5b89a6]'}`} />
+                                            <textarea rows={6} value={formData.descricao} onChange={e => setFormData({...formData, descricao: e.target.value})} placeholder="Fale sobre os diferenciais e a experiência de morar aqui..." className={`w-full resize-none rounded-[32px] bg-slate-50 p-5 font-bold text-slate-800 outline-none transition-all sm:p-8 ${errors.includes("descricao") ? 'border-2 border-red-500 bg-red-50' : 'border border-slate-100 focus:border-[#5b89a6]'}`} />
                                         </div>
                                     </div>
                                 </div>
@@ -205,15 +221,15 @@ export const PageCorrect = () => {
                         </motion.div>
                     </AnimatePresence>
 
-                    <footer className="mt-16 pt-8 flex items-center justify-between border-t border-slate-100">
-                        <button onClick={step === 1 ? () => navigate(-1) : prevStep} className="text-sm font-bold text-slate-400 hover:text-slate-900 transition-all">
-                            {step === 1 ? "← Cancelar" : "← Voltar"}
+                    <footer className="mt-12 flex flex-col-reverse gap-4 border-t border-slate-100 pt-8 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
+                        <button onClick={step === 1 ? () => navigate(-1) : prevStep} className="w-full text-sm font-bold text-slate-400 transition-all hover:text-slate-900 sm:w-auto">
+                            {step === 1 ? "\u2190 Cancelar" : "\u2190 Voltar"}
                         </button>
-                        
-                        <motion.button 
+
+                        <motion.button
                             animate={shake ? { x: [-8, 8, -8, 8, 0] } : {}}
                             onClick={step === 3 ? () => validateStep() && console.log("Finalizar", formData) : nextStep}
-                            className="bg-[#1e293b] text-white px-12 py-5 rounded-2xl font-black text-xs tracking-wider shadow-2xl shadow-slate-900/20 hover:bg-[#5b89a6] hover:scale-105 transition-all active:scale-95"
+                            className="w-full rounded-2xl bg-[#1e293b] px-8 py-4 text-xs font-black tracking-wider text-white shadow-2xl shadow-slate-900/20 transition-all hover:scale-[1.01] hover:bg-[#5b89a6] active:scale-95 sm:w-auto sm:px-12 sm:py-5"
                         >
                             {step === 3 ? "Publicar imóvel" : "Próximo passo"}
                         </motion.button>
